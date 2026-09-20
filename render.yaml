@@ -2,13 +2,11 @@ services:
   # Web Service: FastAPI Backend with integrated React Frontend
   - type: web
     name: ezship-hazmat
-    env: python
+    runtime: python
     region: oregon
     plan: free
-    buildCommand: "./render-build.sh"
+    buildCommand: "bash render-build.sh"
     startCommand: "cd backend && uvicorn hazmat_app.main:app --host 0.0.0.0 --port $PORT"
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.9
-      - key: PORT
-        value: 10000

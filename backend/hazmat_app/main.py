@@ -399,6 +399,15 @@ if DIST_DIR:
         if file_path.is_file():
             return FileResponse(file_path)
         return FileResponse(DIST_DIR / "index.html")
+else:
+    @app.get("/")
+    def index_fallback():
+        return {
+            "service": "EZShip Hazmat Compliance Engine API",
+            "status": "Online",
+            "note": "Frontend dist build not found. If running locally, run 'npm run build' inside /frontend or run Vite dev server on port 5173.",
+            "docs": "/docs"
+        }
 
 if __name__ == "__main__":
     import uvicorn

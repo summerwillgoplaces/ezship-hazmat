@@ -12,3 +12,5 @@
 | @architect | Revert SDS Initial Reference Step | COMPLETED | Yes | 10 | 2 | 12 | 1.00 |
 | @packager | Render.com 1-Click Deployment Setup (Procfile, render.yaml, render-build.sh) | COMPLETED | Yes | 12 | 3 | 15 | 1.00 |
 | @packager | Push to Remote GitHub Repository (ezship-hazmat) | COMPLETED | Yes | 10 | 2 | 12 | 1.00 |
+| @reviewer | Render Deployment Verification & Pre-Flight Fixes | COMPLETED | Yes | 11 | 3 | 14 | 1.00 |
+| @packager | Sync Deployment Fixes to GitHub Remote | COMPLETED | Yes | 8 | 2 | 10 | 1.00 |

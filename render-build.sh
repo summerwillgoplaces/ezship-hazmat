@@ -3,14 +3,11 @@
 set -e
 
 echo "=== 1. Building React Frontend ==="
-cd frontend
-npm install
-npm run build
-cd ..
+npm --prefix frontend install
+npm --prefix frontend run build
 
 echo "=== 2. Installing Backend Python Dependencies ==="
-cd backend
-pip install -r requirements.txt
-cd ..
+pip install --upgrade pip
+pip install -r backend/requirements.txt
 
 echo "=== Build Complete: Frontend dist and Backend Ready ==="
