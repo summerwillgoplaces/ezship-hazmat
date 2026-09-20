@@ -74,6 +74,9 @@ def generate_documents(req: ShipperDeclarationRequest) -> Dict[str, DocumentOutp
     pax_cls = "checked" if is_pax else ""
     cao_cls = "" if is_pax else "checked"
 
+    shipper_addr_html = req.shipper_address.replace("\n", "<br>")
+    consignee_addr_html = req.consignee_address.replace("\n", "<br>")
+
     iata_html = f"""
     <!DOCTYPE html>
     <html>
@@ -160,7 +163,7 @@ def generate_documents(req: ShipperDeclarationRequest) -> Dict[str, DocumentOutp
                 <div class="box">
                     <div class="box-title">Shipper (Name & Full Address)</div>
                     <strong>{req.shipper_name}</strong><br>
-                    {req.shipper_address.replace('\n', '<br>')}
+                    {shipper_addr_html}
                 </div>
                 <div class="box">
                     <div class="box-title">Air Waybill No.</div>
@@ -175,7 +178,7 @@ def generate_documents(req: ShipperDeclarationRequest) -> Dict[str, DocumentOutp
                 <div class="box">
                     <div class="box-title">Consignee (Name & Full Address)</div>
                     <strong>{req.consignee_name}</strong><br>
-                    {req.consignee_address.replace('\n', '<br>')}
+                    {consignee_addr_html}
                 </div>
                 <div class="box">
                     <div class="box-title">Transport Details & Aircraft Limitations</div>
@@ -336,13 +339,13 @@ def generate_documents(req: ShipperDeclarationRequest) -> Dict[str, DocumentOutp
                 <div class="info-block">
                     <div class="info-title">Shipper (Ship From)</div>
                     <strong>{req.shipper_name}</strong><br>
-                    {req.shipper_address.replace('\n', '<br>')}<br>
+                    {shipper_addr_html}<br>
                     <span style="font-size:8.5px; color:#555;">FedEx Ground Acct #: 987654321</span>
                 </div>
                 <div class="info-block">
                     <div class="info-title">Consignee (Ship To)</div>
                     <strong>{req.consignee_name}</strong><br>
-                    {req.consignee_address.replace('\n', '<br>')}<br>
+                    {consignee_addr_html}<br>
                     <span style="font-size:8.5px; color:#555;">Tracking No: 7946 8392 1012</span>
                 </div>
             </div>

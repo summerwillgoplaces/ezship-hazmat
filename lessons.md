@@ -13,3 +13,8 @@
   3. Two-way synchronization wired between wizard, package guide, and document generator.
 - **Validation**: Frontend compiled cleanly via `npm run build` in 1.63s; all 13 backend compliance unit tests passed via `pytest`.
 
+### [2026-09-19] Lesson - Python 3.11 F-String Backslash Compatibility on Cloud Deployments
+- **Context / Task**: Render.com Web Service build/startup failure (`SyntaxError: f-string expression part cannot include a backslash`).
+- **Failure**: Python 3.11 (running on Render container) does not support backslashes inside f-string interpolation braces `{...}`, unlike Python 3.12+.
+- **Root Cause**: `{req.shipper_address.replace('\n', '<br>')}` and `{req.consignee_address.replace('\n', '<br>')}` in `document_generator.py` contained `\n` inside `{...}`.
+- **Preventive Rule**: Never use backslashes inside `{...}` within f-strings. Always pre-assign or sanitize variables prior to string interpolation to ensure compatibility across all Python versions >= 3.8.
