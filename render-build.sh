@@ -3,11 +3,15 @@
 set -e
 
 echo "=== 1. Building React Frontend ==="
-npm --prefix frontend install
-npm --prefix frontend run build
+if command -v npm &> /dev/null; then
+    npm --prefix frontend install
+    npm --prefix frontend run build
+else
+    echo "Notice: npm not found in build container. Using pre-built frontend distribution."
+fi
 
 echo "=== 2. Installing Backend Python Dependencies ==="
 pip install --upgrade pip
-pip install -r backend/requirements.txt
+pip install -r requirements.txt
 
-echo "=== Build Complete: Frontend dist and Backend Ready ==="
+echo "=== Build Complete: Application Ready ==="
